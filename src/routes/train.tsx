@@ -29,7 +29,10 @@ export const Route = createFileRoute("/train")({
 
 function Train() {
   const { letters, length } = Route.useSearch();
-  const letterArr = useMemo(() => Array.from(new Set(letters.split(""))), [letters]);
+  const letterArr = useMemo<string[]>(
+    () => Array.from(new Set(letters.split(""))),
+    [letters],
+  );
 
   const [seed, setSeed] = useState(0);
   const target = useMemo(
