@@ -1,4 +1,5 @@
 import { ALL_LETTERS, PRESETS } from "@/lib/typing";
+import { CANGJIE } from "@/lib/cangjie";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -29,12 +30,12 @@ export function LetterPicker({ selected, onChange }: Props) {
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2 justify-center">
         {[
-          ["all", "All 26"],
-          ["home", "Home row"],
-          ["top", "Top row"],
-          ["bottom", "Bottom row"],
-          ["vowels", "Vowels"],
-          ["clear", "Clear"],
+          ["all", "全部 26"],
+          ["home", "基本鍵"],
+          ["top", "上排"],
+          ["bottom", "下排"],
+          ["vowels", "元音鍵"],
+          ["clear", "清除"],
         ].map(([k, label]) => (
           <button
             key={k}
@@ -59,14 +60,19 @@ export function LetterPicker({ selected, onChange }: Props) {
                   key={l}
                   onClick={() => toggle(l)}
                   className={cn(
-                    "h-12 w-12 sm:h-14 sm:w-14 rounded-2xl font-display text-xl font-bold uppercase transition-all",
+                    "relative h-14 w-14 sm:h-16 sm:w-16 rounded-2xl font-display transition-all flex flex-col items-center justify-center",
                     "border-2 shadow-sm",
                     on
                       ? "bg-primary text-primary-foreground border-primary scale-105"
                       : "bg-card text-muted-foreground border-border hover:border-primary/40 hover:scale-105",
                   )}
                 >
-                  {l}
+                  <span className="text-2xl sm:text-3xl font-bold leading-none">
+                    {CANGJIE[l]}
+                  </span>
+                  <span className="text-[10px] mt-0.5 uppercase opacity-70 font-mono">
+                    {l}
+                  </span>
                 </button>
               );
             })}
@@ -74,7 +80,7 @@ export function LetterPicker({ selected, onChange }: Props) {
         ))}
       </div>
       <p className="text-center text-sm text-muted-foreground">
-        {selected.size} of {ALL_LETTERS.length} letters selected
+        已選 {selected.size} / {ALL_LETTERS.length} 個倉頡字母
       </p>
     </div>
   );
