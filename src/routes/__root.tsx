@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "倉頡鍵位練習 — Cangjie Typing Trainer" },
+      { name: "description", content: "Typing tutor for learning Cangjie input method by practicing character-to-key mappings." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "倉頡鍵位練習 — Cangjie Typing Trainer" },
+      { property: "og:description", content: "Typing tutor for learning Cangjie input method by practicing character-to-key mappings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "倉頡鍵位練習 — Cangjie Typing Trainer" },
+      { name: "twitter:description", content: "Typing tutor for learning Cangjie input method by practicing character-to-key mappings." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5bbcd0ee-fb64-45ef-a574-78bffcf0fe57/id-preview-856c2531--35103b20-ef81-48aa-9c7e-2dda9bcbb349.lovable.app-1779095372033.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5bbcd0ee-fb64-45ef-a574-78bffcf0fe57/id-preview-856c2531--35103b20-ef81-48aa-9c7e-2dda9bcbb349.lovable.app-1779095372033.png" },
     ],
     links: [
       {
