@@ -85,9 +85,10 @@ function Train() {
             {letterArr.map((l) => (
               <span
                 key={l}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary font-mono text-sm font-bold uppercase"
+                className="inline-flex h-8 min-w-8 px-1 items-center justify-center rounded-md bg-primary/10 text-primary text-base font-bold"
+                title={l.toUpperCase()}
               >
-                {l}
+                {require("@/lib/cangjie").CANGJIE[l] ?? l}
               </span>
             ))}
           </div>
