@@ -7,6 +7,7 @@ import { MetricsBar } from "@/components/MetricsBar";
 import { Results } from "@/components/Results";
 import { PlayfulBackground } from "@/components/PlayfulBackground";
 import { computeStats, generateSequence } from "@/lib/typing";
+import { CANGJIE } from "@/lib/cangjie";
 
 const searchSchema = z.object({
   letters: fallback(z.string().regex(/^[a-z]+$/), "asdfjkl").default("asdfjkl"),
@@ -88,7 +89,7 @@ function Train() {
                 className="inline-flex h-8 min-w-8 px-1 items-center justify-center rounded-md bg-primary/10 text-primary text-base font-bold"
                 title={l.toUpperCase()}
               >
-                {require("@/lib/cangjie").CANGJIE[l] ?? l}
+                {CANGJIE[l] ?? l}
               </span>
             ))}
           </div>
