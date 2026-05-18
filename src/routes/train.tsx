@@ -80,7 +80,7 @@ function Train() {
             to="/"
             className="rounded-full bg-card border-2 border-border px-4 py-2 text-sm font-semibold hover:border-primary/50 transition"
           >
-            ← Back
+            ← 返回
           </Link>
           <div className="flex flex-wrap gap-1 justify-end">
             {letterArr.map((l) => (
