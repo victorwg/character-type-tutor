@@ -7,6 +7,7 @@ import { MetricsBar } from "@/components/MetricsBar";
 import { Results } from "@/components/Results";
 import { PlayfulBackground } from "@/components/PlayfulBackground";
 import { computeStats, generateSequence } from "@/lib/typing";
+import { CANGJIE } from "@/lib/cangjie";
 
 const searchSchema = z.object({
   letters: fallback(z.string().regex(/^[a-z]+$/), "asdfjkl").default("asdfjkl"),
@@ -79,15 +80,16 @@ function Train() {
             to="/"
             className="rounded-full bg-card border-2 border-border px-4 py-2 text-sm font-semibold hover:border-primary/50 transition"
           >
-            ← Back
+            ← 返回
           </Link>
           <div className="flex flex-wrap gap-1 justify-end">
             {letterArr.map((l) => (
               <span
                 key={l}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary font-mono text-sm font-bold uppercase"
+                className="inline-flex h-8 min-w-8 px-1 items-center justify-center rounded-md bg-primary/10 text-primary text-base font-bold"
+                title={l.toUpperCase()}
               >
-                {l}
+                {CANGJIE[l] ?? l}
               </span>
             ))}
           </div>
@@ -110,12 +112,14 @@ function Train() {
                   onClick={restart}
                   className="rounded-full bg-card border-2 border-border px-5 py-2 text-sm font-semibold hover:border-primary/50 transition"
                 >
-                  ↻ Reset
+                  ↻ 重新開始
                 </button>
               </div>
               <p className="text-center text-sm text-muted-foreground">
-                Click the box and start typing. Use these letters:{" "}
-                <span className="font-mono font-bold">{letterArr.join(" ")}</span>
+                點擊方塊開始輸入。按下方英文鍵代表對應倉頡字母：{" "}
+                <span className="font-bold">
+                  {letterArr.map((l) => `${CANGJIE[l] ?? l}(${l.toUpperCase()})`).join("　")}
+                </span>
               </p>
             </>
           )}

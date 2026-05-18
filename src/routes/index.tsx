@@ -11,17 +11,15 @@ import { ALL_LETTERS } from "@/lib/typing";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "TypeBuddy — Playful Typing Trainer" },
+      { title: "倉頡鍵位練習 — Cangjie Typing Trainer" },
       {
         name: "description",
-        content:
-          "Pick the letters you want to practice and improve your typing speed with fun, colorful drills.",
+        content: "選擇想練習的倉頡字母鍵位，配合即時 WPM 與準確率，輕鬆熟練倉頡輸入法。",
       },
-      { property: "og:title", content: "TypeBuddy — Playful Typing Trainer" },
+      { property: "og:title", content: "倉頡鍵位練習" },
       {
         property: "og:description",
-        content:
-          "Pick the letters you want to practice and improve your typing speed with fun, colorful drills.",
+        content: "選擇想練習的倉頡字母鍵位，配合即時 WPM 與準確率，輕鬆熟練倉頡輸入法。",
       },
     ],
   }),
@@ -51,31 +49,30 @@ function Index() {
         <section className="relative text-center pb-12">
           <FloatingLetters />
           <span className="relative inline-block rounded-full bg-card border-2 border-border px-4 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-            Playful typing trainer
+            倉頡鍵位練習
           </span>
           <h1 className="relative mt-4 font-display text-5xl sm:text-6xl font-bold leading-tight">
-            Train the keys{" "}
+            練熟你的{" "}
             <span className="bg-[var(--gradient-fun)] bg-clip-text text-transparent">
-              you choose
+              倉頡字母
             </span>
           </h1>
           <p className="relative mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
-            Pick any letters from a to z, then crush a colorful drill with live
-            WPM and accuracy.
+            從 24 個倉頡字根中挑選想加強的鍵位，配合即時 WPM 與準確率，色彩繽紛地練到精熟。
           </p>
         </section>
 
         <div className="space-y-10 rounded-3xl bg-card/80 backdrop-blur border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-fun)]">
           <div>
             <h2 className="font-display text-2xl font-bold mb-4 text-center">
-              1. Pick your letters
+              1. 選擇要練的倉頡字母
             </h2>
             <LetterPicker selected={selected} onChange={setSelected} />
           </div>
 
           <div>
             <h2 className="font-display text-2xl font-bold mb-4 text-center">
-              2. Choose drill length
+              2. 選擇練習長度
             </h2>
             <SessionSettings length={length} onChange={setLength} />
           </div>
@@ -86,18 +83,18 @@ function Index() {
               disabled={!canStart}
               className="rounded-full bg-[var(--gradient-primary)] px-10 py-4 font-display text-xl font-bold text-primary-foreground shadow-[var(--shadow-fun)] hover:scale-105 transition disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed"
             >
-              Start training →
+              開始練習 →
             </button>
           </div>
           {!canStart && (
             <p className="text-center text-sm text-muted-foreground -mt-6">
-              Select at least 2 letters to begin
+              至少選擇 2 個字母才能開始
             </p>
           )}
         </div>
 
         <footer className="mt-12 text-center text-sm text-muted-foreground">
-          Made with ❤️ for happy fingers
+          為快樂手指 ❤️ 而做
         </footer>
       </main>
     </div>

@@ -15,7 +15,7 @@ export function PlayfulBackground() {
 }
 
 export function FloatingLetters() {
-  const letters = ["A", "b", "K", "z", "Q", "m", "T", "e"];
+  const letters = ["日", "月", "金", "木", "水", "火", "土", "竹"];
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {letters.map((l, i) => (

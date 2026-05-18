@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { toRadical } from "@/lib/cangjie";
 
 type Props = {
   target: string;
@@ -27,7 +28,7 @@ export function TypingArea({ target, typed, onChange, disabled }: Props) {
         value={typed}
         onChange={(e) => {
           if (disabled) return;
-          const v = e.target.value;
+          const v = e.target.value.toLowerCase();
           if (v.length <= target.length) onChange(v);
         }}
         onBlur={focus}
@@ -40,7 +41,7 @@ export function TypingArea({ target, typed, onChange, disabled }: Props) {
         className="absolute inset-0 opacity-0"
         aria-label="Typing input"
       />
-      <div className="font-mono text-2xl sm:text-3xl leading-relaxed tracking-wider break-all select-none">
+      <div className="flex flex-wrap gap-x-1 gap-y-3 justify-center select-none">
         {target.split("").map((ch, i) => {
           const isCurrent = i === typed.length;
           const typedCh = typed[i];
@@ -50,20 +51,27 @@ export function TypingArea({ target, typed, onChange, disabled }: Props) {
               : typedCh === ch
                 ? "correct"
                 : "wrong";
+          const isSpace = ch === " ";
+          if (isSpace) {
+            return <span key={i} className="w-4" />;
+          }
           return (
             <span
               key={i}
               className={cn(
-                "relative transition-colors",
+                "relative inline-flex flex-col items-center rounded-lg px-1.5 py-1 transition-colors min-w-[2.25rem]",
                 state === "pending" && "text-muted-foreground/60",
-                state === "correct" && "text-success",
-                state === "wrong" && "text-destructive underline decoration-wavy",
-                isCurrent &&
-                  "text-foreground bg-accent/40 rounded-md px-0.5 animate-pulse",
-                ch === " " && "mr-1",
+                state === "correct" && "text-success bg-success/10",
+                state === "wrong" && "text-destructive bg-destructive/10",
+                isCurrent && "ring-2 ring-primary bg-accent/30 animate-pulse",
               )}
             >
-              {ch === " " ? "\u00A0" : ch}
+              <span className="text-3xl sm:text-4xl font-bold leading-none">
+                {toRadical(ch)}
+              </span>
+              <span className="font-mono text-[10px] mt-1 opacity-70 uppercase">
+                {ch}
+              </span>
             </span>
           );
         })}
